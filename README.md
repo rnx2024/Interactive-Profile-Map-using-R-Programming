@@ -7,3 +7,5 @@ I have also added two additional columns for the dataset, lat and lng to map the
 I have used the leaflet and htmltools packages in creating in interactive map. 
 
 Anyone can use the code and make changes as long as this original repository is referenced. 
+
+The deployed interactive file can be found here: <https://rpubs.com/rnx2024/mapped-info-philippine-presidential-candidates-presidents>
