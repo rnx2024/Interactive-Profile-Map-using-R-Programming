@@ -3,7 +3,7 @@ library(htmltools)
 library(dplyr)
 
 # Load the dataset with the correct file path
-election_data <- read.csv("https://github.com/rnx2024/Interactive-Profile-Map/edit/main/elections_data_final.xlsx")
+election_data <- read.csv("https://github.com/rnx2024/Interactive-Profile-Map/edit/main/elections_data_final.csv")
 
 # Display the first few rows of the dataset
 head(election_data)
