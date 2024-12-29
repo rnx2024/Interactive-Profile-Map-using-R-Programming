@@ -8,4 +8,4 @@ I have used the leaflet and htmltools packages in creating this interactive map.
 
 Anyone can use the code and make changes as long as this original repository is referenced. 
 
-The deployed interactive file can be found here: <https://rpubs.com/rnx2024/mapped-info-philippine-presidential-candidates-presidents>
+The interactive mapped profile info can be found here: <https://rpubs.com/rnx2024/mapped-info-philippine-presidential-candidates-presidents>
