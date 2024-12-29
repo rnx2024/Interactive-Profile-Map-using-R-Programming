@@ -60,7 +60,7 @@ for (i in 1:nrow(processed_data)) {
       lat = as.numeric(processed_data$latitude[i]),
       icon = icons(
         iconUrl = ifelse(processed_data$has_won[i] == 1, "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", "http://maps.google.com/mapfiles/ms/icons/red-dot.png"),
-        iconWidth = 25, iconHeight = 41
+        iconWidth = 35, iconHeight = 35
       ),
       popup = HTML(processed_data$tooltip[i]),
       label = HTML(processed_data$tooltip[i]),
