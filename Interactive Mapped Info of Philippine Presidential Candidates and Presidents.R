@@ -1,9 +1,10 @@
 library(leaflet)
 library(htmltools)
 library(dplyr)
+library(stringr)
 
 # Load the dataset with the correct file path
-election_data <- read.csv("https://github.com/rnx2024/Interactive-Profile-Map/edit/main/elections_data_final.csv")
+election_data <- read.csv("C:\\Users\\acer\\Documents\\R_Case_Studies\\elections_data_final.csv")
 
 # Display the first few rows of the dataset
 head(election_data)
@@ -14,6 +15,39 @@ election_data[is.na(election_data)] <- "Unknown"
 # Check for any remaining NA values in latitude and longitude
 sum(is.na(election_data$lat))
 sum(is.na(election_data$lng))
+
+# Function to adjust lat and lng if there are duplicates with different names
+adjust_lat_lng <- function(data) {
+  seen_locations <- list()
+  horizontal_adjustment <- TRUE
+  
+  for (i in 1:nrow(data)) {
+    city <- data$city[i]
+    lat <- data$lat[i]
+    lng <- data$lng[i]
+    name <- data$name[i]
+    location_key <- paste(city, lat, lng, sep = "_")
+    
+    if (location_key %in% names(seen_locations)) {
+      if (seen_locations[[location_key]] != name) {
+        if (horizontal_adjustment) {
+          data$lng[i] <- lng + runif(1, -0.50, 0.10)
+        } else {
+          data$lat[i] <- lat + runif(1, -0.10, 0.60)
+        }
+        horizontal_adjustment <- !horizontal_adjustment
+        location_key <- paste(city, data$lat[i], data$lng[i], sep = "_")
+      }
+    }
+    
+    seen_locations[[location_key]] <- name
+  }
+  
+  return(data)
+}
+
+# Adjust the latitude and longitude in the dataset
+election_data <- adjust_lat_lng(election_data)
 
 # Group by candidate name to ensure unique entries and handle winning status
 processed_data <- election_data %>%
@@ -59,15 +93,6 @@ for (i in 1:nrow(processed_data)) {
       lng = as.numeric(processed_data$longitude[i]),
       lat = as.numeric(processed_data$latitude[i]),
       icon = icons(
-        iconUrl = ifelse(processed_data$has_won[i] == 1, "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", "http://maps.google.com/mapfiles/ms/icons/red-dot.png"),
+        iconUrl = ifelse(processed_data$has_won[i] == 1, "http://maps.google.com/mapfiles/ms/icons/green-dot.png", "http://maps.google.com/mapfiles/ms/icons/red-dot.png"),
         iconWidth = 35, iconHeight = 35
-      ),
-      popup = HTML(processed_data$tooltip[i]),
-      label = HTML(processed_data$tooltip[i]),
-      labelOptions = labelOptions(noHide = FALSE, direction = "auto", style = list("font-size" = "12px"))
-    )
-}
-
-# Display the map
-map
-
+        
