@@ -4,7 +4,7 @@ library(dplyr)
 library(stringr)
 
 # Load the dataset with the correct file path
-election_data <- read.csv("C:\\Users\\acer\\Documents\\R_Case_Studies\\elections_data_final.csv")
+election_data <- read.csv("/elections_data_final.csv")
 
 # Display the first few rows of the dataset
 head(election_data)
