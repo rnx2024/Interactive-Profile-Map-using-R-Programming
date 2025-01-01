@@ -9,3 +9,7 @@ I have used the leaflet and htmltools packages in creating this interactive map.
 Anyone can use the code and make changes as long as this original repository is referenced. 
 
 The interactive mapped profile info can be found here: <https://rpubs.com/rnx2024/philippine-presidential-candidates-and-presidents-mapped-profiles>
+
+Edits Have been made to the code:
+Changes were made to the code to handle same lat and lng locations for some Presidents and Candidates. 
+All 17 Presidents are now shwoing with green markers, 3 of which are located in Manila. 
