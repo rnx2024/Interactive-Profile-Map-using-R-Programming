@@ -11,8 +11,8 @@ Anyone can use the code and make changes as long as this original repository is 
 
 The interactive mapped profile info can be found here: <https://rpubs.com/rnx2024/philippine-presidential-candidates-and-presidents-mapped-profiles>
 
-Edits Have been made to the code:
-Changes were made to the code to handle some lat and lng locations for some Presidents and Candidates, like Manila. 
+Edits have been made to the code:
+Changes were made to the code to handle similar lat and lng locations for some Presidents and Candidates, like Manila. 
 All 17 Presidents are now displayed with green markers, 3 of which are located in Manila. 
 
 
