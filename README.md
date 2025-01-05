@@ -1,4 +1,4 @@
-This is an interactive Mapped Profile Info of Philippine Presidential Candidates and Presidents. 
+This is an interactive Mapped Profiles of Philippine Presidential Candidates and Presidents. 
 The dataset used is from Abe Caesar Perez of Kaggle.com <https://www.kaggle.com/datasets/abeperez/ph-presidential-elections>
 
 I have only extracted Presidential Candidates with complete information. I have not included 42 candidates from the dataset because of essential missing information such as city, province and others. 
