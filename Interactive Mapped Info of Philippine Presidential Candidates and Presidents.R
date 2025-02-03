@@ -3,15 +3,12 @@ library(htmltools)
 library(dplyr)
 library(stringr)
 
-# Load the dataset with the correct file path
 election_data <- read.csv("/elections_data_final.csv")
 
-# Display the first few rows of the dataset
 head(election_data)
 
 # Replace NA values with "Unknown" for categorical variables
 election_data[is.na(election_data)] <- "Unknown"
-
 # Check for any remaining NA values in latitude and longitude
 sum(is.na(election_data$lat))
 sum(is.na(election_data$lng))
@@ -86,7 +83,7 @@ map <- leaflet() %>%
   addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
   setView(lng = 121.7740, lat = 12.8797, zoom = 6)
 
-# Loop through each candidate to add standard markers with tooltips
+# Loop through each candidate to add location markers with tooltips
 for (i in 1:nrow(processed_data)) {
   map <- map %>%
     addMarkers(
