@@ -9,9 +9,9 @@ I have used dplyr to clean the dataset and used leaflet and htmltools packages i
 I have chosen to use the OpenStreetMap.Mapnik as against any other tile providers because of its simpler design that allows faster loading. 
 Anyone can use the code and make changes as long as this original repository is referenced. 
 
-The interactive mapped profile is published at: [![Button2](https://img.shields.io/badge/View-Mapped%20Profile-orange)](https://rpubs.com/rnx2024/philippine-presidential-candidates-and-presidents-mapped-profiles)
+The interactive mapped profile is published at: [![Button2](https://img.shields.io/badge/View-Mapped%20Profile-purple)](https://rpubs.com/rnx2024/philippine-presidential-candidates-and-presidents-mapped-profiles)
 
-[![Button2](https://img.shields.io/badge/NOTE:-UPDATE-red)] Changes were made to the code to handle similar lat and lng locations for some Presidents and Candidates, like Manila. 
+![Button2](https://img.shields.io/badge/NOTE:-UPDATE-red) Changes were made to the code to handle similar lat and lng locations for some Presidents and Candidates, like Manila. 
 All 17 Presidents are now displayed with green markers, 3 of which are located in Manila. 
 
 
