@@ -1,3 +1,5 @@
+![Image](https://github.com/rnx2024/Interactive-Profile-Map/blob/main/Mapped-Profiles-Pres-Candidates.png)
+
 This is an interactive Mapped Profiles of Philippine Presidential Candidates and Presidents. 
 The dataset used is from Abe Caesar Perez of Kaggle.com [![Button2](https://img.shields.io/badge/Download-KaggleDataset-blue)](https://www.kaggle.com/datasets/abeperez/ph-presidential-elections)
 
