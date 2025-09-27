@@ -3,7 +3,7 @@ library(htmltools)
 library(dplyr)
 library(stringr)
 
-election_data <- read.csv("/elections_data_final.csv")
+election_data <- read.csv("elections_data_final.csv")
 
 head(election_data)
 
@@ -83,13 +83,51 @@ map <- leaflet() %>%
   addProviderTiles(providers$OpenStreetMap.Mapnik) %>%
   setView(lng = 121.7740, lat = 12.8797, zoom = 6)
 
+# image URLs keyed with full names
+image_url_map <- c(
+  "Benigno Simeon Cojuangco Aquino III"        = "https://upload.wikimedia.org/wikipedia/commons/1/1d/Benigno_%22Noynoy%22_S._Aquino_III_%28cropped%29.jpg",
+  "Carlos Polistico Garcia"                    = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Carlos_P._Garcia_Official_Malaca%C3%B1an_Portrait.jpg/250px-Carlos_P._Garcia_Official_Malaca%C3%B1an_Portrait.jpg",
+  "Diosdado Pangan Macapagal Sr."              = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Diosdado_Macapagal_Official_Malaca%C3%B1an_Portrait.jpg/250px-Diosdado_Macapagal_Official_Malaca%C3%B1an_Portrait.jpg",
+  "Elpidio Rivera Quirino"                     = "https://i0.wp.com/www.nndb.com/people/145/000098848/elpidio-quirino-1.jpg",
+  "Emilio Aguinaldo y Famy"                    = "https://static.wikia.nocookie.net/philippines/images/8/8d/Emilio_Aguinaldo2.webp/revision/latest?cb=20240331102225",
+  "Ferdinand \"Bongbong\" Romualdez Marcos Jr."= "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Portrait_of_President_Ferdinand_R._Marcos%2C_Jr_%28cropped%29.jpg/250px-Portrait_of_President_Ferdinand_R._Marcos%2C_Jr_%28cropped%29.jpg",
+  "Ferdinand Emmanuel Edralin Marcos Sr."      = "https://philippineculturaleducation.com.ph/wp-content/uploads/2017/10/sk-marcos-ferdinand.jpg",
+  "Fidel Valdez Ramos"                         = "https://peace.gov.ph/wp-content/uploads/2025/05/FVR-400x400.png",
+  "Jose Marcelo Ejercito Sr."                  = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Joseph_Estrada_Official_Malaca%C3%B1an_Portrait.jpg/250px-Joseph_Estrada_Official_Malaca%C3%B1an_Portrait.jpg",
+  "José Paciano Laurel y García"               = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/President_Jose_P._Laurel.jpg/250px-President_Jose_P._Laurel.jpg",
+  "Manuel Acuña Roxas"                         = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Roxas-w960.jpg/250px-Roxas-w960.jpg",
+  "Maria Corazon \"Cory\" Sumulong Cojuangco Aquino" = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Corazon_Aquino_Official_Malaca%C3%B1an_Portrait.jpg/250px-Corazon_Aquino_Official_Malaca%C3%B1an_Portrait.jpg",
+  "Maria Gloria Macaraeg Macapagal Arroyo"     = "https://upload.wikimedia.org/wikipedia/commons/3/33/President_Arroyo_%2806-14-2006%29.jpg",
+  "Ramon del Fierro Magsaysay Sr."             = "https://i0.wp.com/www.nndb.com/people/143/000098846/ramon-magsaysay-1.jpg",
+  "Rodrigo Roa Duterte"                        = "https://upload.wikimedia.org/wikipedia/commons/5/5e/President_Rodrigo_Duterte_portrait_%28cropped%29.jpg",
+  "Sergio Osmeña Sr."                          = "https://philippinespres.weebly.com/uploads/6/3/8/1/6381749/5536795.jpg"
+)
+
 # Loop through each candidate to add location markers with tooltips
 for (i in 1:nrow(processed_data)) {
+  nm <- processed_data$name[i]
+  img_url <- if (nm %in% names(image_url_map)) image_url_map[nm] else NA_character_
+  
+  # prepend image to existing tooltip HTML
+  img_tag <- if (!is.na(img_url)) sprintf(
+    "<img src='%s' style='width:140px;height:auto;border-radius:6px;margin-bottom:6px;'>",
+    img_url
+  ) else ""
+  popup_html <- paste0(img_tag, processed_data$tooltip[i])
+  
   map <- map %>%
     addMarkers(
       lng = as.numeric(processed_data$longitude[i]),
       lat = as.numeric(processed_data$latitude[i]),
       icon = icons(
-        iconUrl = ifelse(processed_data$has_won[i] == 1, "http://maps.google.com/mapfiles/ms/icons/green-dot.png", "http://maps.google.com/mapfiles/ms/icons/red-dot.png"),
-        iconWidth = 35, iconHeight = 35
-        
+        iconUrl = ifelse(processed_data$has_won[i] == 1,
+                         "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+                         "http://maps.google.com/mapfiles/ms/icons/red-dot.png"),
+        iconWidth = 35,
+        iconHeight = 35
+      ),
+      popup = popup_html
+    )
+}
+
+map
