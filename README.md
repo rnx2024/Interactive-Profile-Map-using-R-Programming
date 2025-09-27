@@ -1,4 +1,4 @@
-![Image](https://github.com/rnx2024/Interactive-Profile-Map-using-R-Programming/blob/main/Screenshot%202025-09-27%20210622.png)
+![Image](https://github.com/rnx2024/Interactive-Profile-Map-using-R-Programming/blob/main/Tooltip-With-Image-Thumbnail.png)
 
 This is an interactive Mapped Profiles of Philippine Presidential Candidates and Presidents. Each Presidential candidate is mapped to their city location. Green locators are Presidential Winners. Each mapped Presidential candidate has a tooltip profile. The map needs to be zoomed in order to access all profiles. 
 
