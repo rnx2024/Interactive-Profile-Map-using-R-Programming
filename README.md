@@ -13,7 +13,7 @@ I have created this project to aid History students in their lessons and History
 
 Anyone can use the code and make changes as long as this original repository is referenced. 
 
-The interactive mapped profile is published at: [![Button2](https://img.shields.io/badge/RPubs-Click%20to%20View%20Mapped%20Profile-purple)](https://rpubs.com/rnx2024/philippine-presidential-candidates-and-presidents-mapped-profiles)
+The interactive mapped profile is published at: [![Button2](https://rpubs.com/rnx2024/1349028)
 
 ![Button2](https://img.shields.io/badge/NOTE:-UPDATE-red) Changes were made to the code to handle similar lat and lng locations for some Presidents and Candidates, like Manila. 
 All 17 Presidents are now displayed with green markers, 3 of which are located in Manila. For multiple location markers such as Manila, some may not be immediately visible. You have to zoom in to locate other location markers showing candidate profiles. 
