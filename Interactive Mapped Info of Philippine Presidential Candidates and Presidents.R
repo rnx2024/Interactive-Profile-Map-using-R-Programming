@@ -100,8 +100,9 @@ image_url_map <- c(
   "Maria Gloria Macaraeg Macapagal Arroyo"     = "https://upload.wikimedia.org/wikipedia/commons/3/33/President_Arroyo_%2806-14-2006%29.jpg",
   "Ramon del Fierro Magsaysay Sr."             = "https://i0.wp.com/www.nndb.com/people/143/000098846/ramon-magsaysay-1.jpg",
   "Rodrigo Roa Duterte"                        = "https://upload.wikimedia.org/wikipedia/commons/5/5e/President_Rodrigo_Duterte_portrait_%28cropped%29.jpg",
-  "Sergio Osmeña Sr."                          = "https://philippinespres.weebly.com/uploads/6/3/8/1/6381749/5536795.jpg"
-)
+  "Sergio Osmeña Sr."                          = "https://philippinespres.weebly.com/uploads/6/3/8/1/6381749/5536795.jpg",
+  "Manuel Luis Quezon y Molina"                = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdHm8xylJRNV4NtiRxZiWzvZ2L1oSAY4CCSunROpSq0LmivtOmgqwuwpsQdMCNizgOVKmQntLpoIrexAGXef2oAWfYiKY5YXKXh7sZuMz2huOx2mT9tUPH-bjxnuuBbZtKLg_IAB-p2D2k/s320/manuel+l.+quezon.jpg"
+  )
 
 # Loop through each candidate to add location markers with tooltips
 for (i in 1:nrow(processed_data)) {
@@ -131,3 +132,4 @@ for (i in 1:nrow(processed_data)) {
 }
 
 map
+
